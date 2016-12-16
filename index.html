@@ -41,8 +41,8 @@
            <button class="button" ng-click="!workActive && !restActive  && toggleMode()" ng-disabled="workActive || restActive">m</button>
            <button class="button" ng-click="update(-1)" ng-disabled="workActive || restActive">-</button>
            <button class="button" ng-click="update(1)" ng-disabled="workActive || restActive">+</button>
-           <button class="pause button" ng-class="{'active': !timerActive }" ng-click="pause()" ng-disabled="restActive">||</button>
-           <button class="play button" ng-class="{'active': timerActive }" ng-click="start()" ng-disabled="workActive">|></button>
+           <button class="pause button" ng-class="{'active': !workActive }" ng-click="pause()" ng-disabled="restActive">||</button>
+           <button class="play button" ng-class="{'active': workActive }" ng-click="start()" ng-disabled="workActive">|></button>
          </div>
   	  </div>
     </div>
