@@ -18,28 +18,34 @@
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
   </head>
   <body ng-app="pomodoro">
-    <div id="clock" class="dark" ng-controller="PomodoroController">
-	     <div class="display">
-		      <div class="config">
-            <span>Rest : 
-              <timer countdown="restFor" interval="1000" active="false" output-format="mm:ss">{{formatted}}</timer>
-            </span>
-          </div>
-		      <div class="mode"><span ng-class="{'active': !mode }">rest</span> / <span ng-class="{'active': mode }">work</span></div>
-		      <div class="alarm"></div>
-		      <div class="digits">
-            <timer countdown="workFor" interval="1000" active="timerActive"
-              output-format="mm:ss" on-zero-callback="callback">{{formatted}}</timer>
-          </div>
-	     </div>
-       <div class="control">
-         <div class="button" ng-click="toggleMode()">mode</div>
-         <div class="button" ng-click="update(-1)"></div>
-         <div class="button" ng-click="update(1)"></div>
-         <div class="pause button" ng-class="{'active': !timerActive }" ng-click="pause()"></div>
-         <div class="play button" ng-class="{'active': timerActive }" ng-click="start()"></div>
-       </div>
-	  </div>
+    <div class=content>
+      <h1>FreeCodeCamp</h1>
+      <h3>Pomodoro Clock</h3>
+      <div id="clock" class="dark" ng-controller="PomodoroController">
+  	     <div class="display">
+  		      <div class="config">
+              <span>Rest :
+                <timer countdown="restFor" interval="1000" active="restActive"
+                 output-format="mm:ss" on-zero-callback="startWork">{{formatted}}</timer>
+              </span>
+              {{state}}
+            </div>
+  		      <div class="mode"><span ng-class="{'active': !mode }">rest</span> / <span ng-class="{'active': mode }">work</span></div>
+  		      <div class="alarm"></div>
+  		      <div class="digits">
+              <timer countdown="workFor" interval="1000" active="workActive"
+                output-format="mm:ss" on-zero-callback="startRest">{{formatted}}</timer>
+            </div>
+  	     </div>
+         <div class="control">
+           <button class="button" ng-click="!workActive && !restActive  && toggleMode()" ng-disabled="workActive || restActive">m</button>
+           <button class="button" ng-click="update(-1)" ng-disabled="workActive || restActive">-</button>
+           <button class="button" ng-click="update(1)" ng-disabled="workActive || restActive">+</button>
+           <button class="pause button" ng-class="{'active': !timerActive }" ng-click="pause()" ng-disabled="restActive">||</button>
+           <button class="play button" ng-class="{'active': timerActive }" ng-click="start()" ng-disabled="workActive">|></button>
+         </div>
+  	  </div>
+    </div>
 
     <script src="js/vendor/jquery-1.12.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

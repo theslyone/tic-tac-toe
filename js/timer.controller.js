@@ -4,34 +4,49 @@
   function PomodoroController($scope){
     $scope.mode = 1;
 
-    $scope.workFor = 10;
-    $scope.restFor = 5;
-    $scope.timerActive = false;
+    $scope.workFor = $scope.workForDefault = 10;
+    $scope.restFor = $scope.restForDefault = 5;
+    $scope.workActive = false;
+    $scope.restActive = false;
+    $scope.state = "Idle";
 
     $scope.start = function(){
-      $scope.timerActive = true;
+      $scope.startWork();
     };
     $scope.pause = function(){
-      $scope.timerActive = false;
+      $scope.state = "Paused";
+      $scope.workActive = $scope.restActive = false;
     };
 
     $scope.update = function(value){
-      switch ($scope.mode) {
-        case 0:
-          $scope.restFor = $scope.restFor + value > 0 ? $scope.restFor + value : 0;
-          break;
-        case 1:
-          $scope.workFor = $scope.workFor + value > 0 ? $scope.workFor + value : 0;
-          break;
+      if(!$scope.workActive && !$scope.restActive){
+        switch ($scope.mode) {
+          case 0:
+            $scope.restFor = $scope.restFor + value > 0 ? $scope.restFor + value : 0;
+            $scope.restForDefault = $scope.restFor;
+            break;
+          case 1:
+            $scope.workFor = $scope.workFor + value > 0 ? $scope.workFor + value : 0;
+            $scope.workForDefault = $scope.workFor;
+            break;
+        }
       }
     };
     $scope.toggleMode = function(){
       $scope.mode = $scope.mode == 0 ? 1 : 0;
     };
 
-    $scope.callback = function () {
-        $scope.txt = 'Countdown is over!';
-        $scope.workFor = 10;
+    $scope.startRest = function () {
+      $scope.state = 'Rest Time!';
+      $scope.restActive = true;
+      $scope.workFor = $scope.workForDefault;
+    };
+
+    $scope.startWork = function () {
+      $scope.mode = 1;
+      $scope.state = 'Work Time!';
+      $scope.workActive = true;
+      $scope.restFor = $scope.restForDefault;
     };
   }
 })();

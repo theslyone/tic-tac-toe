@@ -16,7 +16,7 @@
 
 html{
 	background:url('../img/bg.jpg') #dbe4e6;
-	/*overflow:hidden;*/
+	overflow:hidden;
 }
 
 body{
@@ -47,7 +47,7 @@ section, footer, header, aside{
 #clock{
 	width:370px;
 	padding:40px 40px 10px 40px;
-	margin:200px auto 60px;
+	margin:70px auto 60px;
 	position:relative;
 }
 

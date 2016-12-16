@@ -1,5 +1,5 @@
 ## Pomodoro Clock
-A simple pomodoro timer clock based on the   [freecodecamp](https://www.freecodecamp.com/challenges/https://www.freecodecamp.com/challenges/build-a-pinterest-clone) courseware user story requirement.
+A simple pomodoro timer clock based on the   [freecodecamp](https://www.freecodecamp.com/challenges/build-a-pomodoro-clock) courseware user story requirement.
 
 #Usage
 Demo [Codepen](http://codepen.io/theslyguy/pen/qqLERp)
