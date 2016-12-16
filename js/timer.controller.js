@@ -4,8 +4,8 @@
   function PomodoroController($scope){
     $scope.mode = 1;
 
-    $scope.workFor = $scope.workForDefault = 10;
-    $scope.restFor = $scope.restForDefault = 5;
+    $scope.workFor = $scope.workForDefault = 25 * 60;
+    $scope.restFor = $scope.restForDefault = 5 * 60;
     $scope.workActive = false;
     $scope.restActive = false;
     $scope.state = "Idle";
@@ -22,11 +22,11 @@
       if(!$scope.workActive && !$scope.restActive){
         switch ($scope.mode) {
           case 0:
-            $scope.restFor = $scope.restFor + value > 0 ? $scope.restFor + value : 0;
+            $scope.restFor = $scope.restFor + value * 60 > 0 ? $scope.restFor + value * 60 : 0;
             $scope.restForDefault = $scope.restFor;
             break;
           case 1:
-            $scope.workFor = $scope.workFor + value > 0 ? $scope.workFor + value : 0;
+            $scope.workFor = $scope.workFor + value * 60 > 0 ? $scope.workFor + value * 60 : 0;
             $scope.workForDefault = $scope.workFor;
             break;
         }

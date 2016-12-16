@@ -98,7 +98,20 @@ textarea {
 .content{
   width: 80%;
   margin: 70px auto;
+  font-family: 'Pacifico', 'Orbitron', sans-serif;
   text-align: center;
+}
+
+.content h1 {
+    display: block;
+    margin: 0 auto;
+    font-size: 5em;
+}
+
+.content h3 {
+    display: block;
+    margin: 0 auto;
+    font-size: 1em;
 }
 
 .display{
