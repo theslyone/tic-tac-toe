@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>pomodoro timer</title>
+    <title>tic tac toe</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,39 +11,33 @@
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="css/normalize.css">
+    <link href="css/semantic.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/main.css">
-		<link href="css/style.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' />
+		<link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' />
 
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
   </head>
-  <body ng-app="pomodoro">
-    <div class=content>
+  <body ng-app="tictactoe">
+    <div class="content">
       <h1>FreeCodeCamp</h1>
-      <h3>Pomodoro Clock</h3>
-      <div id="clock" class="dark" ng-controller="PomodoroController">
-  	     <div class="display">
-  		      <div class="config">
-              <span>Rest :
-                <timer countdown="restFor" interval="1000" active="restActive"
-                 output-format="mm:ss" on-zero-callback="startWork">{{formatted}}</timer>
-              </span>
-              {{state}}
-            </div>
-  		      <div class="mode"><span ng-class="{'active': !mode }">rest</span> / <span ng-class="{'active': mode }">work</span></div>
-  		      <div class="alarm"></div>
-  		      <div class="digits">
-              <timer countdown="workFor" interval="1000" active="workActive"
-                output-format="mm:ss" on-zero-callback="startRest">{{formatted}}</timer>
-            </div>
-  	     </div>
-         <div class="control">
-           <button class="button" ng-click="!workActive && !restActive  && toggleMode()" ng-disabled="workActive || restActive">m</button>
-           <button class="button" ng-click="update(-1)" ng-disabled="workActive || restActive">-</button>
-           <button class="button" ng-click="update(1)" ng-disabled="workActive || restActive">+</button>
-           <button class="pause button" ng-class="{'active': !workActive }" ng-click="pause()" ng-disabled="restActive">||</button>
-           <button class="play button" ng-class="{'active': workActive }" ng-click="start()" ng-disabled="workActive">|></button>
-         </div>
+      <h3>Tic Tac Toe</h3>
+      <div id="tictactoe"></div>
+      <div id="grid" class="ui celled three column grid segment" ng-controller="TicTacToeController" ng-init="play()">
+        <div class="row">
+          <div class="column"> 1 </div>
+          <div class="column"> 2 </div>
+          <div class="column"> 3 </div>
+        </div>
+        <div class="row">
+          <div class="column"> 4 </div>
+          <div class="column"> 5 </div>
+          <div class="column"> 6 </div>
+        </div>
+        <div class="row">
+          <div class="column"> 7 </div>
+          <div class="column"> 8 </div>
+          <div class="column"> 9 </div>
+        </div>
   	  </div>
     </div>
 
@@ -53,8 +47,7 @@
     <script src="js/vendor/angular.min.js"></script>
     <script src="js/vendor/moment.js"></script>
     <script src="js/vendor/underscore-min.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/timer.directive.js"></script>
-    <script src="js/timer.controller.js"></script>
+    <script src="js/tictactoe.js"></script>
+    <script src="js/tictactoe.controller.js"></script>
   </body>
 </html>
