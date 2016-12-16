@@ -1,0 +1,49 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>pomodoro timer</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+		<link href="css/style.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' />
+
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  </head>
+  <body ng-app="pomodoro">
+    <div id="clock" class="dark" ng-controller="PomodoroController">
+	     <div class="display">
+		      <div class="weekdays">{{txt}}</div>
+		      <div class="ampm"></div>
+		      <div class="alarm"></div>
+		      <div class="digits">
+            <timer countdown="time" interval="1000" active="timerActive"
+              output-format="mm:ss" on-zero-callback="callback">{{formatted}}</timer>
+          </div>
+	     </div>
+       <div class="control">
+         <div class="button" ng-click="decrement()"></div>
+         <div class="button" ng-click="increment()"></div>
+         <div class="pause button" ng-class="{'active': !timerActive }" ng-click="pause()"></div>
+         <div class="play button" ng-class="{'active': timerActive }" ng-click="start()"></div>
+       </div>
+	  </div>
+
+    <script src="js/vendor/jquery-1.12.0.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+	  <script src="js/plugins.js"></script>
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/moment.js"></script>
+    <script src="js/vendor/underscore-min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/timer.directive.js"></script>
+    <script src="js/timer.controller.js"></script>
+  </body>
+</html>
