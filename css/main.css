@@ -106,10 +106,14 @@ textarea {
 
 .control{
   margin: 10px auto;
-  width:60%;
+  width:80%;
 }
 
 .button{
+  box-shadow:0 2px 2px #ccc;
+	color:#fff;
+	text-decoration: none !important;	
+
   position: relative;
   border: 3px solid #0f1620;
   width: 36px;
@@ -123,6 +127,7 @@ textarea {
 
 .button:hover{
   transform: scale(1.1, 1.1);
+  opacity: 0.9;
 }
 
 .button.active{

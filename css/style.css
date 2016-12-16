@@ -344,26 +344,26 @@ section, footer, header, aside{
 
 
 /*-------------------------
-	Weekdays
+	Config
 --------------------------*/
 
 
-#clock .weekdays{
+#clock .config{
 	font-size:12px;
 	position:absolute;
-	width:100%;
+	/*width:100%;*/
 	top:10px;
 	left:0;
 	text-align:center;
 }
 
 
-#clock .weekdays span{
+#clock .config span{
 	opacity:0.2;
 	padding:0 10px;
 }
 
-#clock .weekdays span.active{
+#clock .config span.active{
 	opacity:1;
 }
 
@@ -373,11 +373,15 @@ section, footer, header, aside{
 --------------------------*/
 
 
-#clock .ampm{
+#clock .mode{
 	position:absolute;
-	bottom:20px;
+	top:10px;
 	right:20px;
 	font-size:12px;
+}
+
+#clock .mode span:not(.active){
+	color: #0F1603;
 }
 
 
