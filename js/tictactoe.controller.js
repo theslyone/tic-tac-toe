@@ -1,22 +1,64 @@
 (function(){
   angular.module("tictactoe").controller('TicTacToeController', TicTacToeController);
-  TicTacToeController.$inject = ['$scope'];
-  function TicTacToeController($scope){
+  TicTacToeController.$inject = ['$scope', '$state'];
+  function TicTacToeController($scope, $state){
     $scope.squares = [];
     $scope.EMPTY = "\xA0";
     $scope.score = 0
     $scope.moves = 0;
-    $scope.turn = "X";
-
+    /*
+    * To determine a win condition, each square is "tagged" from left
+    * to right, top to bottom, with successive powers of 2.  Each cell
+    * thus represents an individual bit in a 9-bit string, and a
+    * player's squares at any given time can be represented as a
+    * unique 9-bit value. A winner can thus be easily determined by
+    * checking whether the player's current 9 bits have covered any
+    * of the eight "three-in-a-row" combinations.
+    *
+    *     273                 84
+    *        \               /
+    *          1 |   2 |   4  = 7
+    *       -----+-----+-----
+    *          8 |  16 |  32  = 56
+    *       -----+-----+-----
+    *         64 | 128 | 256  = 448
+    *       =================
+    *         73   146   292
+    *
+    */
+    $scope.indicators = [1, 2, 4, 8, 16, 32, 64, 128, 256];
     $scope.wins = [7, 56, 448, 73, 146, 292, 273, 84];
+
+    $scope.players = function(count){
+      switch(count){
+        case 1:
+          break;
+        case 2:
+          break;
+        default:
+
+          break;
+      }
+      $state.go('side');
+    };
+
+    $scope.side = function(value){
+      $scope.turn = value;
+      $state.go('side.play');
+    };
+
+    $scope.reset = function(value){
+      $state.go('player');
+    };
 
     $scope.startNewGame = function () {
       var i;
-      $scope.turn = "X";
+      console.log($scope.turn);
+      /*$scope.turn = "X";*/
       $scope.score = {"X": 0, "O": 0};
       $scope.moves = 0;
       for (i = 0; i < $scope.squares.length; i += 1) {
-        $scope.squares[i].firstChild.nodeValue = $scope.EMPTY;
+        $scope.squares[i].value = $scope.EMPTY;
       }
     };
 
@@ -30,13 +72,13 @@
       return false;
     };
 
-    $scope.set = function () {
-      if (this.firstChild.nodeValue !== $scope.EMPTY) {
+    $scope.picked = function (square) {
+      if (square.value !== $scope.EMPTY) {
         return;
       }
-      this.firstChild.nodeValue = $scope.turn;
+      square.value = $scope.turn;
       $scope.moves += 1;
-      $scope.score[$scope.turn] += this.indicator;
+      $scope.score[$scope.turn] += square.indicator;
       if ($scope.win($scope.score[$scope.turn])) {
         alert($scope.turn + " wins!");
         $scope.startNewGame();
@@ -44,36 +86,30 @@
         alert("Cat\u2019s game!");
         $scope.startNewGame();
       } else {
-        $scope.turn = $scope.turn === "X" ? "O" : "X";
+        advanceTurn();
       }
     };
 
     $scope.play = function () {
-      var board = document.createElement("table"),
-        indicator = 1,
-        i, j,
-        row, cell,
-        parent;
-        board.border = 1;
-      for (i = 0; i < 3; i += 1) {
-        row = document.createElement("tr");
-        board.appendChild(row);
-        for (j = 0; j < 3; j += 1) {
-          cell = document.createElement("td");
-          cell.width = cell.height = 50;
-          cell.align = cell.valign = 'center';
-          cell.indicator = indicator;
-          cell.onclick = $scope.set;
-          cell.appendChild(document.createTextNode(""));
-          row.appendChild(cell);
-          $scope.squares.push(cell);
-          indicator += indicator;
-        }
-      }
-      // Attach under tictactoe if present, otherwise to body.
-      parent = document.getElementById("tictactoe") || document.body;
-      parent.appendChild(board);
+      $scope.indicators.forEach(function(element, index, array){
+        var cell = { indicator: element, value: $scope.EMPTY };
+        $scope.squares.push(cell);
+      });
       $scope.startNewGame();
     };
+
+    advanceTurn = function() {
+        $scope.turn = $scope.turn === "X" ? "O" : "X";
+    }
+
+    emptyCells = function() {
+        var indxs = [];
+        for(var itr = 0; itr < $scope.squares.length ; itr++) {
+            if($scope.squares[itr].value === $scope.EMPTY) {
+                indxs.push(itr);
+            }
+        }
+        return indxs;
+    }
   }
 })();

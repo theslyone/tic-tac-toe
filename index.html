@@ -21,23 +21,8 @@
     <div class="content">
       <h1>FreeCodeCamp</h1>
       <h3>Tic Tac Toe</h3>
-      <div id="tictactoe"></div>
-      <div id="grid" class="ui celled three column grid segment" ng-controller="TicTacToeController" ng-init="play()">
-        <div class="row">
-          <div class="column"> 1 </div>
-          <div class="column"> 2 </div>
-          <div class="column"> 3 </div>
-        </div>
-        <div class="row">
-          <div class="column"> 4 </div>
-          <div class="column"> 5 </div>
-          <div class="column"> 6 </div>
-        </div>
-        <div class="row">
-          <div class="column"> 7 </div>
-          <div class="column"> 8 </div>
-          <div class="column"> 9 </div>
-        </div>
+      <div id="grid" class="ui segment" ng-controller="TicTacToeController">
+        <ui-view></ui-view>
   	  </div>
     </div>
 
@@ -45,9 +30,11 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 	  <script src="js/plugins.js"></script>
     <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular-ui-router.min.js"></script>
     <script src="js/vendor/moment.js"></script>
     <script src="js/vendor/underscore-min.js"></script>
     <script src="js/tictactoe.js"></script>
+    <script src="js/tictactoe.directive.js"></script>
     <script src="js/tictactoe.controller.js"></script>
   </body>
 </html>
