@@ -53,7 +53,6 @@
 
     $scope.startNewGame = function () {
       var i;
-      console.log($scope.turn);
       $scope.score = {"X": 0, "O": 0};
       $scope.moves = 0;
       for (i = 0; i < $scope.squares.length; i += 1) {
