@@ -1,4 +1,4 @@
-## Pomodoro Clock
+## Tic Tac Toe
 A simple tic tac toe game based on the   [freecodecamp](https://www.freecodecamp.com/challenges/build-a-tic-tac-toe-game) courseware user story requirement.
 
 #Screenshot
