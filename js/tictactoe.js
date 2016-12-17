@@ -13,11 +13,10 @@
       template: `<div class="ui padded">
                   <h2 class="ui dividing center aligned header">How do you want to play?</h2>
                   <div>
-                    <button class="ui compact mini green button" ng-click="players(1)">One Player</button>
-                    <button class="ui compact mini blue button">Two Players</button>
+                    <button class="ui compact mini green disabled button" ng-click="players(1)">One Player</button>
+                    <button class="ui compact mini blue button" ng-click="players(2)">Two Players</button>
                   </div>
                 </div>`,
-      controller: 'TicTacToeController',
     })
     .state('side', {
       url: '/side',
@@ -30,15 +29,13 @@
                   </div>
                 </div>
                 <button class="ui red mini compact reset button" ng-click="reset()">reset</button>`,
-      controller: 'TicTacToeController',
     })
-    .state('side.play', {
+    .state('play', {
       url: '/side.play',
       template: `<div class="ui celled three column grid" ng-init="play()">
                   <picker ng-repeat="square in squares" value="square.value" ng-click="picked(square)"></picker>
                 </div>
                 <button class="ui red mini compact reset button" ng-click="reset()">reset</button>`,
-      controller: 'TicTacToeController',
     });
   }
 

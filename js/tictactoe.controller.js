@@ -44,7 +44,7 @@
 
     $scope.side = function(value){
       $scope.turn = value;
-      $state.go('side.play');
+      $state.go('play');
     };
 
     $scope.reset = function(value){
@@ -54,7 +54,6 @@
     $scope.startNewGame = function () {
       var i;
       console.log($scope.turn);
-      /*$scope.turn = "X";*/
       $scope.score = {"X": 0, "O": 0};
       $scope.moves = 0;
       for (i = 0; i < $scope.squares.length; i += 1) {

@@ -95,8 +95,8 @@ textarea {
    Author's custom styles
    ========================================================================== */
 html{
- 	background:url('../img/bg.jpg') #dbe4e6;
-	/*overflow:hidden;*/
+ 	background: #dbe4e6;
+	overflow:hidden;
 }
 
 body{
