@@ -31,7 +31,7 @@
                 <button class="ui red mini compact reset button" ng-click="reset()">reset</button>`,
     })
     .state('play', {
-      url: '/side.play',
+      url: '/play',
       template: `<div class="ui celled three column grid" ng-init="play()">
                   <picker ng-repeat="square in squares" value="square.value" ng-click="picked(square)"></picker>
                 </div>
